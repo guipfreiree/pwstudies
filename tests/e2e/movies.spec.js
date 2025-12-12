@@ -1,8 +1,8 @@
 const { test, expect, request } = require('@playwright/test');
-const { MoviesPage } = require('../pages/MoviesPage');
-const { LandingPage } = require('../pages/LandingPage');
-const { Toast } = require('../pages/Components');
-const { LoginAdminPage } = require('../pages/LoginAdminPage');
+const { MoviesPage } = require('../support/actions/Movies');
+const { LandingPage } = require('../support/actions/Landing');
+const { Toast } = require('../support/actions/Components');
+const { LoginAdminPage } = require('../support/actions/LoginAdmin');
 
 const data = require('../support/fixtures/movies.json');
 const { executeSql } = require('../support/database');
@@ -41,3 +41,4 @@ test('deve cadastrar um novo filme', async ({ page }) => {
     await moviesPage.createMovie(movie.title, movie.overview, movie.company, movie.release_year)
     await toast.containText('Cadastro realizado com sucesso!')
 })
+
